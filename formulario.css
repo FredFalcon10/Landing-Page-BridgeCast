@@ -112,6 +112,15 @@
     min-height: 120px;
 }
 
+/* Dica de campo */
+.field-hint {
+    display: block;
+    font-size: 1.3rem;
+    color: rgba(242, 232, 220, 0.6);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
 /* Checkbox */
 .checkbox-group {
     margin-top: 2rem;

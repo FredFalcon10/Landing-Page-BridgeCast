@@ -1,15 +1,22 @@
-// Máscara para telefone
+// Validação e formatação do telefone internacional
 const telefoneInput = document.getElementById('telefone');
 
 telefoneInput.addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\D/g, '');
-    
-    if (value.length <= 11) {
-        value = value.replace(/(\d{2})(\d)/, '($1) $2');
-        value = value.replace(/(\d{5})(\d)/, '$1-$2');
-    }
-    
+    // Remove tudo que não é número, +, espaço, hífen ou parênteses
+    let value = e.target.value.replace(/[^\d\+\s\-\(\)]/g, '');
     e.target.value = value;
+});
+
+// Validação adicional no blur (quando sai do campo)
+telefoneInput.addEventListener('blur', function(e) {
+    const value = e.target.value.trim();
+    const onlyNumbers = value.replace(/\D/g, '');
+    
+    // Verifica se tem pelo menos 10 dígitos (mínimo aceitável)
+    if (onlyNumbers.length > 0 && onlyNumbers.length < 10) {
+        alert('Por favor, insira um número de telefone válido com pelo menos 10 dígitos.');
+        e.target.focus();
+    }
 });
 
 // Manipulação do formulário
@@ -21,28 +28,26 @@ form.addEventListener('submit', function(e) {
     
     // Validação básica
     const nome = document.getElementById('nome').value.trim();
-    const email = document.getElementById('email').value.trim();
     const telefone = document.getElementById('telefone').value.trim();
-    const termos = document.getElementById('termos').checked;
+    const email = document.getElementById('email').value.trim();
     
-    if (!nome || !email || !telefone) {
+    if (!nome || !telefone || !email) {
         alert('Por favor, preencha todos os campos obrigatórios.');
         return;
     }
     
-    if (!termos) {
-        alert('Você precisa aceitar os termos para continuar.');
+    // Valida se o telefone tem pelo menos 10 dígitos
+    const onlyNumbers = telefone.replace(/\D/g, '');
+    if (onlyNumbers.length < 10) {
+        alert('Por favor, insira um número de telefone válido.');
         return;
     }
     
     // Coleta dos dados
     const formData = {
         nome: nome,
-        email: email,
         telefone: telefone,
-        cidade: document.getElementById('cidade').value,
-        experiencia: document.getElementById('experiencia').value,
-        mensagem: document.getElementById('mensagem').value,
+        email: email,
         timestamp: new Date().toISOString()
     };
     
