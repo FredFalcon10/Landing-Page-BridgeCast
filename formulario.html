@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="formulario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Inscrição - BridgeCast</title>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-wrapper">
+            <a href="/" class="back-btn">← Voltar</a>
+            
+            <div class="form-header">
+                <h2>Participe da nossa <span>comunidade</span></h2>
+                <p>Preencha os dados abaixo e comece sua jornada de renda passiva no exterior</p>
+            </div>
+
+            <form id="inscricaoForm" class="inscricao-form">
+                <div class="form-group">
+                    <label for="nome">Nome Completo *</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Número/WhatsApp *</label>
+                    <input type="tel" id="telefone" name="telefone" required placeholder="Ex: +55 11 98765-4321 ou +1 555 123-4567">
+                    <small class="field-hint">Digite com código do país (Brasil: +55, EUA: +1)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+
+                <button type="submit" class="btn submit-btn">Enviar Inscrição</button>
+            </form>
+
+            <div id="successMessage" class="success-message" style="display: none;">
+                <h3>✓ Inscrição enviada com sucesso!</h3>
+                <p>Em breve entraremos em contato.</p>
+                <a href="/" class="btn">Voltar para o início</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="footer">
+        <div class="share">
+            <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/instagram-new.png" alt="instagram-new"/>
+            <img width="30" height="30" src="https://img.icons8.com/ios/50/FFFFFF/tiktok--v1.png" alt="tiktok--v1"/>
+            <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/facebook-new.png" alt="facebook-new"/>
+            <img width="30" height="30" src="https://img.icons8.com/ios/30/FFFFFF/twitterx--v1.png" alt="twitterx--v1"/>
+        </div>
+    </section>
+
+    <script src="formulario.js"></script>
+</body>
+</html>
