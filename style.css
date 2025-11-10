@@ -311,7 +311,7 @@ html {
     margin-left: 1rem;
 }
 
-/* parceria */
+/* Review Section */
 .review {
     padding: 10rem 9% 5rem;
     background: var(--bg-color);
@@ -352,8 +352,8 @@ html {
 }
 
 .review .box .user {
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
@@ -371,6 +371,22 @@ html {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
+}
+
+/* Endereço Section */
+.endereço {
+    padding: 10rem 9% 5rem;
+    background: var(--second-bg-color);
+    text-align: center;
+}
+
+.endereço iframe {
+    width: 100%;
+    max-width: 900px;
+    height: 450px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-top: 3rem;
 }
 
 /* Footer */
