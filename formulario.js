@@ -53,32 +53,40 @@ form.addEventListener('submit', function(e) {
     
     console.log('Dados do formulário:', formData);
     
-    // Aqui você pode enviar os dados para um backend
-    // Exemplo com fetch:
-    /*
-    fetch('/api/inscricao', {
+    // Desabilita o botão para evitar duplo envio
+    const submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    
+    // Envia os dados para o webhook do Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbxiDwdwQY61mBAHWq_DlmXOXcWKYWK0oyz-mnW4ic7CvcfHCb3HSjykWPIofoXuOpSyeg/exec', {
         method: 'POST',
+        mode: 'no-cors', // Necessário para Google Apps Script
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData)
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
+    .then(() => {
+        console.log('Dados enviados com sucesso!');
+        
+        // Mostra mensagem de sucesso
+        form.style.display = 'none';
+        successMessage.style.display = 'block';
+        
+        // Scroll suave para o topo
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     })
     .catch((error) => {
-        console.error('Error:', error);
-    });
-    */
-    
-    // Simular envio bem-sucedido
-    form.style.display = 'none';
-    successMessage.style.display = 'block';
-    
-    // Scroll suave para o topo
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+        console.error('Erro ao enviar:', error);
+        
+        // Reabilita o botão em caso de erro
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar Inscrição';
+        
+        alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
     });
 });
